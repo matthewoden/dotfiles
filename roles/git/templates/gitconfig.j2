@@ -1,0 +1,59 @@
+[hub]
+        protocol = https
+[user]
+        name = {{ full_name }}
+        email = {{ git_email }}
+[alias]
+        a = add
+        st = status
+        s = status
+        co = checkout
+        cob = checkout -b
+        c = checkout
+        ci = commit
+        noff = merge --no-ff
+        plr = pull --rebase
+        amend = commit --amend
+        wip = commit --no-verify -am "WIP"
+        br = branch
+        rn = branch -m
+
+        publish = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+
+        unstage = reset -q HEAD --
+        discard = checkout --
+        uncommit = reset --mixed HEAD~
+
+        l = log --graph --decorate --oneline --abbrev-commit --all
+        h = log --graph --decorate --oneline --abbrev-commit
+
+        issues = !hub browse -- issues
+        # Copy current branch name to clipboard (macOS only)
+        cb = "!git rev-parse --abbrev-ref HEAD | tr -d '\n' | pbcopy"
+
+        remote-branches = "!f() { git ls-remote --heads ${1:origin} | sed 's?.*refs/heads/??'; }; f "
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore_global
+        editor = nvim
+[apply]
+        whitespace = nowarn
+[mergetool]
+        tool = kaleidoscope
+        keepBackup = false
+[difftool]
+        tool = kaleidoscope
+        prompt = false
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to surpress warning message
+        default = simple
+        followTags = true
+[github]
+        user = {{ git_user }}#

@@ -1,0 +1,13 @@
+---
+
+- name: Add lua plugin to asdf
+  command: "${HOME}/.asdf/bin/asdf plugin-add lua"
+  register: elixir_add
+  failed_when: elixir_add == 1
+
+- name: "Install lua versions"
+  command: asdf install lua {{ item }}
+  loop: "{{ versions }}"
+
+- name: Set global version for lua to {{ versions[0] }}
+  command: "asdf global lua {{ versions[0] }}" 

@@ -1,0 +1,19 @@
+dotfiles_user_home: "{{ '~' | expanduser }}"
+dotfiles_home: "{{ dotfiles_user_home }}/www/dotfiles"
+
+full_name: Matthew Potter
+git_user: matthewoden
+git_email: heymatthewoden@gmail.com
+
+# asdf_plugins:
+  # - name: elixir
+    # version: 1.10.3
+
+  # - name: erlang
+    # version: 23.3.3
+    # environment:
+      # - KERL_CONFIGURE_OPTIONS: "--without-javac --with-ssl=$(brew --prefix openssl)"
+
+  # - name: nodejs
+    # version: 12.16.3 # LTS Latest
+

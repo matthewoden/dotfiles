@@ -217,8 +217,8 @@ nnoremap <Leader>de :Delete<CR`>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " nnoremap <Leader>q :q<CR>
-nnoremap <Leader>w :w!<CR> "TODO - investigate delay here.
-nnoremap <Leader>wq :wq!<CR>
+nnoremap <Leader>w :w!<CR> 
+nnoremap <Leader>q :q!<CR>
 
 " <Ctrl-u> and <Ctrl-d> also center the screen
 nnoremap <silent> <C-u> <C-u>zz

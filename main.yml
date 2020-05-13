@@ -1,0 +1,31 @@
+---
+- name: Set up local workstation
+  hosts: local
+  roles:
+    - role: xcode
+      tags: 
+        - xcode
+
+    - role: homebrew
+      tags:
+        - homebrew
+
+    - role: git
+      tags:
+        - git
+    
+    - role: asdf
+      tags:
+        - asdf
+
+    - role: erlang
+      tags:
+        - erlang
+
+    - role: elixir
+      tags:
+        - elixir
+
+    - role: lua
+      tags:
+        - lua

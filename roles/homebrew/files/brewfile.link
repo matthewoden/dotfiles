@@ -1,0 +1,19 @@
+# Brew
+
+brew "autoconf"
+brew "wxmac"
+brew "docker-compose"
+brew "bash-completion"
+brew "git"
+brew "git-lfs"
+brew "jq"
+brew "neovim"
+brew "terraform"
+brew "terraform-inventory"
+brew "terraform-provisioner-ansible"
+brew "tmux"
+brew "vault"
+
+# Cask
+cask "alacritty"
+
