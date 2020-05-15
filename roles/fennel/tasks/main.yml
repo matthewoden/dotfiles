@@ -1,0 +1,9 @@
+---
+- name: check if Fennel exists
+  stat: 
+    path: "${HOME}/.asdf/shims/fennel"
+  register: check_fennel
+
+- name: Install Fennel {{version}}
+  command: "${HOME}/.asdf/shims/luarocks install fennel {{version}}"
+  when: check_fennel.stat.exists == False

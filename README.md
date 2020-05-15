@@ -39,9 +39,11 @@ TODO:
 - [] alacritty
     - [] .alacritty.conf
 - [] asdf
-    - [] elixir
-    - [] erlang
-    - [] node
+    - [x] elixir
+    - [x] erlang
+    - [x] lua
+    - [x] fennel
+    - [x] node
 - [] bash_profile
     - [] bashrc
     - [] PS1 Prompt
