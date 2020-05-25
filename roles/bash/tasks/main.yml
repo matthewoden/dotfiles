@@ -1,0 +1,47 @@
+---
+
+- name: Create .bash_projects directory
+  file:
+    path: "$HOME/.bash_projects"
+    state: directory
+
+- name: Check if bashrc exists
+  stat:
+    path: "$HOME/.bashrc"
+  register: bashrc 
+
+
+- name: Back up bashrc 
+  command: mv ~/.bashrc ~/.bashrc.bak
+  args:
+    creates: "$HOME/.bashrc.bak"
+  when: bashrc.stat.exists
+
+
+- name: Link bashrc file
+  file:
+    src: "{{ role_path }}/files/.bashrc"
+    dest: "$HOME/.bashrc"
+    state: link
+    force: yes
+
+# bash profile
+- name: Check if bash_profile exists
+  stat:
+    path: "$HOME/.bash_profile"
+  register: bashprofile
+
+
+- name: Back up bash_profile 
+  command: mv ~/.bash_profile ~/.bash_profile.bak
+  args:
+    creates: "$HOME/.bash_profile.bak"
+  when: bashprofile.stat.exists
+
+
+- name: Link bash_profile file
+  file:
+    src: "{{role_path}}/files/.bash_profile"
+    dest: "$HOME/.bash_profile"
+    state: link
+    force: yes

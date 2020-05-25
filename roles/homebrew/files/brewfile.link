@@ -4,10 +4,13 @@ brew "autoconf"
 brew "wxmac"
 brew "docker-compose"
 brew "bash-completion"
-brew "git"
+brew "bash-git-prompt"
+brew "fzf"
 brew "git-lfs"
 brew "jq"
 brew "neovim"
+brew "mas"
+brew "ripgrep"
 brew "terraform"
 brew "terraform-inventory"
 brew "terraform-provisioner-ansible"
@@ -17,3 +20,13 @@ brew "vault"
 # Cask
 cask "alacritty"
 
+
+# Mac app store
+mas "Xcode" , id: 497799835 
+mas "The Unarchiver" , id: 425424353 
+mas "Unsplash Wallpapers" , id: 1284863847 
+mas "Quiver" , id: 866773894 
+mas "Slack" , id: 803453959 
+mas "Pixelmator" , id: 407963104 
+mas "Encrypto" , id: 935235287 
+mas "Timelime", id: 589698946 

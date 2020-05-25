@@ -2,9 +2,16 @@
 - name: Set up local workstation
   hosts: local
   roles:
+
+    # Tools 
+
     - role: xcode
       tags: 
         - xcode
+
+    - role: bash
+      tags: 
+        - bash
 
     - role: homebrew
       tags:
@@ -13,7 +20,22 @@
     - role: git
       tags:
         - git
-    
+
+    # Editor
+    - role: alacritty
+      tags: 
+        - alacritty
+        
+    - role: vim
+      tags:
+        - vim
+
+    - role: tmux
+      tags:
+        - tmux
+
+    # Languages
+        
     - role: asdf
       tags:
         - asdf
@@ -33,3 +55,7 @@
     - role: fennel
       tags: 
         - fennel
+
+    - role: rust
+      tags: 
+        - rust

@@ -6,11 +6,13 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
-
+augroup PlugUpdates
+    autocmd!
+    autocmd VimEnter *
+    \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \|   PlugInstall --sync | q
+    \| endif
+augroup END 
 
 call plug#begin()
 " themes / syntax
@@ -52,39 +54,38 @@ set termguicolors
 set guifont=SF\ Mono\ Powerline
 
 syntax on
-set ruler
-set number
+set ruler  " alwayts show cursor position
+set number          " show numbers
+set relativenumber  " show relative line distance, and reveal current line number"
+set numberwidth=5   " 5 columns of numbers
 set mouse=nv
 
+" convert tabs to spaces
+" indent with 4 spaces
+" when shifting, indent with 4 spaces
+" indent 4 spaces when I press tab
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-
-" Make line cursor on be highlighted
-set cursorline
-
-set autoread
-set noerrorbells
+set cursorline      " Make line cursor on be highlighted
+set autoread        " read file if changed outside of vim
+set noerrorbells    " do not beep on invalid commands
 set backspace=indent,eol,start   " Backspace deletes like most programs in insert mode
-set history=50
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set noshowmode
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
-set lazyredraw
-set hidden
-set ttyfast
-set wildmenu
+set history=1000    " increase history
+set showcmd         " display incomplete commands
+set laststatus=2    " Always display the status lino
+set autowrite       " Automatically :write before running commands
+set lazyredraw      " draw when needed, don't update during macro execution
+set hidden          " hide files, rather than closing
+set wildmenu        " display complete options as a menu
 
 set undofile
 set undodir^=~/.vim/undo//
+
 " always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
-
+set ruler           " show the cursor position all the time
 " speed up syntax highlighting
-syntax on
-set nocursorcolumn
-set nocursorline
+set nocursorcolumn " do not highlight the current column
 
 " softwrap
 set wrap
@@ -95,19 +96,12 @@ set colorcolumn=+1
 
 set autoindent
 set showmatch
-set smarttab
 set updatetime=300 "default is 4 seconds -- too slow.
 
 " better project search
 set path+=**                                                                    
 set wildignore+=**/node_modules/** 
 
-" Softtabs, 4 spaces
-set et
-set tabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
 
 " Time out on key codes but no mappings.
 set notimeout
@@ -117,8 +111,6 @@ set ttimeoutlen=10
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" Numbers
-set number relativenumber numberwidth=5
 
 " Better Completion
 set complete=.,w,b,u,t
@@ -148,10 +140,13 @@ augroup END
 " (happens when dropping a file on gvim).
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
-autocmd BufReadPost *
+augroup CursorStore
+    autocmd!
+    autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \	exe "normal! g`\"" |
       \ endif
+augroup END
 
 set swapfile
 set directory^=~/.vim/swap//
@@ -173,18 +168,24 @@ end
 set clipboard=unnamedplus
 
 " add jsonc support
-autocmd FileType json syntax match Comment +\/\/.\+$+
+augroup jsonc_support
+    autocmd!
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+augroup END
 
 """"
 " nerdtree
 """
 " Open NERDTree automatically when vim starts up on opening a directory?
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+augroup nerdtree_commands
+    autocmd!
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
-" Close NERDTree if last and only buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    " Close NERDTree if last and only buffer
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 
 " show hidden files, ignore mac files
 let NERDTreeShowHidden=1
@@ -218,7 +219,7 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " nnoremap <Leader>q :q<CR>
 nnoremap <Leader>w :w!<CR> 
-nnoremap <Leader>q :q!<CR>
+" nnoremap <Leader>q :q!<CR>
 
 " <Ctrl-u> and <Ctrl-d> also center the screen
 nnoremap <silent> <C-u> <C-u>zz
@@ -235,6 +236,7 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Symbol renaming.
@@ -275,14 +277,18 @@ function! s:show_documentation()
   endif
 endfunction
 
+
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup coc_highlight
+    autocmd!
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -291,13 +297,16 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" required to keep color syntax after sourcing vimrc.
-autocmd ColorScheme * 
-              \ hi CocErrorSign  ctermfg=Red guifg=#ff0000 | 
-              \ hi CocWarningSign  ctermfg=Brown guifg=#ff922b |
-              \ hi CocInfoSign  ctermfg=Yellow guifg=#fab005 |
-              \ hi CocHintSign  ctermfg=Blue guifg=#15aabf |
-              \ hi CocUnderline  cterm=underline gui=underline
+augroup coc_colors
+    autocmd!
+    " required to keep color syntax after sourcing vimrc.
+    autocmd ColorScheme * 
+                \ hi CocErrorSign  ctermfg=Red guifg=#ff0000 | 
+                \ hi CocWarningSign  ctermfg=Brown guifg=#ff922b |
+                \ hi CocInfoSign  ctermfg=Yellow guifg=#fab005 |
+                \ hi CocHintSign  ctermfg=Blue guifg=#15aabf |
+                \ hi CocUnderline  cterm=underline gui=underline
+augroup END
 
 """
 " Statusline

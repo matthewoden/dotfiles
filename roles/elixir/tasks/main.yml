@@ -1,7 +1,7 @@
 ---
 
 - name: Add elixir plugin to asdf
-  command: "${HOME}/.asdf/bin/asdf plugin-add elixir"
+  command: "$HOME/.asdf/bin/asdf plugin-add elixir"
   register: elixir_add
   failed_when: elixir_add == 1
 

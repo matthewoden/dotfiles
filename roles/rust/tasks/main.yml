@@ -1,0 +1,27 @@
+---
+
+- name: Check if rust script exists
+  stat:
+    path: "$HOME/.bash_projects/rust.bash"
+  register: rustsh_check
+
+- name: Backup rust script
+  command: mv ~/.bash_projects/rust.sh ~/.bash_projects/rust.sh.bak
+  when: rustsh_check.stat.exists
+
+- name: Add rust scripts
+  file:
+    src: "{{ role_path }}/files/rust.bash"
+    dest: "$HOME/.bash_projects/rust.bash"
+    state: link
+    force: yes
+
+- name: Check if rust is installed
+  stat:
+    path: "$HOME/.cargo/bin/rustc"
+  register: rust_check
+
+- name: Install rust
+  command: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+  when: rust_check.stat.exists ==  False
+

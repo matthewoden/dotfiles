@@ -1,0 +1,19 @@
+---
+
+- name: Check if .alacrity.yml config exists
+  stat:
+    path: "$HOME/.alacritty.yml"
+  register: alacrittyrc
+
+- name: Back up alacritty config 
+  command: mv ~/.alacritty.yml ~/.alacritty.yml.bak
+  args:
+    creates: "$HOME/.alacritty.yml.bak"
+  when: alacrittyrc.stat.exists
+
+- name: Copy alacritty config
+  file:
+    src: "{{ role_path }}/files/.alacritty.yml"
+    dest: "$HOME/.alacritty.yml"
+    state: link
+    force: yes

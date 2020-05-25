@@ -1,0 +1,63 @@
+---
+- name: Check if init.vim exists
+  stat:
+    path: "$HOME/.config/nvim/init.vim"
+  register: vimrc 
+  
+- name: Back up init.vim 
+  command: mv ~/.config/nvim/init.vim  ~/.config/nvim/init.vim.bak
+  args:
+    creates: "$HOME/.config/nvim/init.vim.bak"
+  when: vimrc.stat.exists
+
+- name: Link init.vim file to standard neovim config location
+  file:
+    src: "{{role_path}}/files/init.vim"
+    dest: "$HOME/.config/nvim/init.vim"
+    state: link
+    force: yes
+    
+- name: Link init.vim to standard vimrc location
+  file:
+    src: "{{ role_path }}/files/init.vim"
+    dest: "$HOME/.vimrc"
+    state: link
+    force: yes
+
+- name: Create vim project directory
+  file: 
+    dest: "$HOME/www/vim"
+    state: directory
+
+- name: Install Tmux-Omni-Vim plugin
+  git:
+    repo: "https://github.com/andy-lang/tmux-omnivim"
+    dest: "$HOME/www/vim/omnivim"
+    #hasn't been updated in four years, but still.
+    version: "07f694f94095cb73d14f50a78b88ff3c7b18af49"
+
+# - name: Copy vim-session to path
+  # file:
+    # src: "{{ role_path }}/files/vim-session"
+    # dest: "/usr/local/bin/vim-session"
+    # state: link
+    # force: yes
+
+- name: Check if vim.bash exists
+  stat:
+    path: "$HOME/.bash_projects/vim.bash"
+  register: vimbash 
+  
+- name: Back up vim.bash
+  command: "mv $HOME/.bash_projects/vim.bash $HOME/.bash_projects/vim.bash.bak"
+  args:
+    creates: "$HOME/.bash_projects/vim.bash.bak"
+  when: vimbash.stat.exists
+
+- name: Link vim.bash file to bash projects location
+  file:
+    src: "{{ role_path }}/files/vim.bash"
+    dest: "$HOME/.bash_projects/vim.bash"
+    state: link
+    force: yes
+    

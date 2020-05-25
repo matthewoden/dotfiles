@@ -11,7 +11,8 @@ if ! [ -x "$(command -v ansible)" ]; then
   pip3 install ansible # TODO: do this better.
 fi
 
-ansible-playbook -i "$PWD/hosts" "$PWD/main.yml" --ask-become-pass --tags $tags
+ansible-playbook -i "$PWD/inventory" "$PWD/main.yml" \
+    --ask-become-pass --tags $tags
 
 if command -v terminal-notifier 1>/dev/null 2>&1; then
   terminal-notifier -title "dotfiles: Bootstrap complete" -message "Successfully set up dev environment."

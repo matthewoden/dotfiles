@@ -1,5 +1,4 @@
 ---
 
-install_homebrew_if_missing: false
-upgrade_homebrew_packages: false
-install_bundle: false #for debugging dep. tasks
+upgrade_homebrew_packages: False
+install_bundle: False 

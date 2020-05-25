@@ -1,0 +1,64 @@
+---
+- name: Check if tmux.conf exists
+  stat:
+    path: "$HOME/.tmux.conf"
+  register: tmuxconf 
+  
+- name: Back up tmux.conf 
+  command: mv ~/.tmux.conf ~/.tmux.conf.bak
+  args:
+    creates: "$HOME/.tmux.conf.bak"
+  when: tmuxconf.stat.exists
+
+- name: Link to tmux.conf in home directory
+  file:
+    src: "{{role_path}}/files/.tmux.conf"
+    dest: "$HOME/.tmux.conf"
+    state: link
+    force: yes
+
+# tmux session hopper
+- name: Add tmux-session to path
+  file:
+    src: "{{role_path}}/files/tmux-session"
+    dest: "/usr/local/bin/tmux-session"
+    state: link
+    force: yes
+
+# tmuxify
+- name: Add Tmuxify for layouts
+  git:
+    repo: https://github.com/matthewoden/tmuxifier.git
+    dest: "$HOME/.tmuxifier"
+    
+- name: Add tmux lauyout directory
+  file:
+    dest: "$HOME/.tmux-layouts"
+    state: directory 
+    
+- name: Add laptop layout
+  file:
+    src: "{{role_path}}/files/tmux-laptop.window.sh"
+    dest: "$HOME/.tmux-layouts/tmux-laptop.window.sh"
+    state: link
+    force: yes
+
+
+# Tmux Scripts
+- name: Check if tmux scripts exists
+  stat:
+    path: "$HOME/.bash_projects/tmux.bash"
+  register: tmuxsh  
+
+- name: Back up tmux scripts 
+  command: "mv $HOME/.bash_projects/tmux.bash $HOME/.bash_projects/tmux.bash.bak"
+  args:
+    creates: "$HOME/.bash_projects/tmux.bash.bak"
+  when: tmuxsh.stat.exists
+
+- name: Add tmux scripts
+  file:
+    src: "{{ role_path }}/files/tmux.bash"
+    dest: "$HOME/.bash_projects/tmux.bash"
+    state: link
+    force: yes

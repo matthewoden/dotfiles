@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# use a single vim instance in a tmux session.
+
+
+# are we in a tmux client already? If we are $TMUX will be set.
+if test -z "${TMUX:-}"; then
+    # We're not in a client? Nothing more to do here. 
+    # Just open a new vim instance.
+    echo "not in tmux"
+    nvim $@
+else
+    echo "in tmux"
+    session_name=`tmux display-message -p '#S'`
+    socket_path="/tmp/.nvim-$session_name.session"
+
+    if [ -f $socket_path ]; then
+        echo "socket path - $socket_path"
+        exec nvr --servername "$socket_path" --remote $@
+    else
+        echo "No socket path - $socket_path"
+        exec env NVIM_LISTEN_ADDRESS="$socket_path" nvim $@
+    fi
+fi  

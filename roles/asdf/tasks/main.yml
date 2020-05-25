@@ -4,4 +4,20 @@
     dest: "~/.asdf"
     version: v0.7.4
 
+- name: check for asdf.sh script
+  stat:
+    path: "$HOME/.bash_projects/asdf.bash"
+  register: asdfsh_check
 
+- name: backup asdf.sh script
+  command: "mv $HOME/.bash_projects/asdf.bash $HOME/.bash_projects/asdf.bash.bak"
+  args:
+    creates: "$HOME/.bash_projects/asdf.bash.bak" 
+  when: asdfsh_check.stat.exists
+
+- name: Add asdf.sh
+  file:
+    src: "{{ role_path }}/files/asdf.bash"
+    dest: "$HOME/.bash_projects/asdf.bash"
+    state: link
+    force: yes 
