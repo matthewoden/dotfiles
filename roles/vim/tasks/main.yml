@@ -36,12 +36,11 @@
     #hasn't been updated in four years, but still.
     version: "07f694f94095cb73d14f50a78b88ff3c7b18af49"
 
-# - name: Copy vim-session to path
-  # file:
-    # src: "{{ role_path }}/files/vim-session"
-    # dest: "/usr/local/bin/vim-session"
-    # state: link
-    # force: yes
+- name: Install Plugins
+  command: "nvim + 'PlugInstall --sync' +qa"
+
+- name: Install CocExtensions
+  command: "nvim + 'CocInstall --sync coc-tsserver coc-elixir coc-json coc-html coc-eslint ' +qa"
 
 - name: Check if vim.bash exists
   stat:

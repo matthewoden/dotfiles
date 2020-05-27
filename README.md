@@ -35,6 +35,8 @@ Or, just with the binfile, passing in $tags.
 
 Roles TODO:
 
+- [] fonts
+    - [] Powerline Modified SF Mono 
 - [x] xcode
 - [x] homebrew
     - [x] brew
@@ -48,6 +50,8 @@ Roles TODO:
 - [] neovim 
     - [x] omni-vim
     - [x] tmux-vim-navigator
+    - [x] plugins
+    - [x] coc-extensions
 - [x] alacritty
     - [x] .alacritty.conf
 - [x] asdf-vm

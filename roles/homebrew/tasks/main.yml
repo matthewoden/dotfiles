@@ -22,6 +22,40 @@
     state: link
     force: yes
 
+- name: Ensure MAS is installed.
+  homebrew: "name=mas state=present"
+  when:
+    - install_bundle
+
+- name: Get MAS account status
+  command: mas account
+  register: mas_account_result
+  failed_when: mas_account_result.rc > 1
+  check_mode: false
+  changed_when: false
+  
+- pause:
+    prompt: "App store email?"
+  register: mas_email
+  no_log: true
+  when: 
+    - install_bundle
+
+- pause:
+    prompt: "App store password?"
+    echo: no 
+  register: mas_password 
+  no_log: true
+  when: 
+    - install_bundle 
+    
+- name: Sign in to MAS when email and password are provided.
+  command: 'mas signin "{{ mas_email.user_input }}" "{{ mas_password.user_input }}"'
+  when:
+    - mas_account_result.rc == 1
+    - mas_email | bool
+    - mas_password | bool
+
 - name: Install from Brewfile.
   command: "brew bundle chdir=$HOME"
   when: install_bundle

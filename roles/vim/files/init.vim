@@ -38,8 +38,15 @@ Plug 'christoomey/vim-tmux-navigator' "sync tmux and vim
 " editing
 Plug 'Raimondi/delimitMate' " closes quotes automatically
 Plug 'tpope/vim-surround' " surround words with qoutes, parens, etc
-Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-repeat' " repeat commands with plugins
+Plug 'preservim/nerdcommenter' " comment mappings
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " autocomplete/intellisense
+
+" fennel - one day, I'll write you...
+Plug 'guns/vim-sexp', {'for': ['fennel']}
+Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['fennel']}
+Plug 'kovisoft/paredit', {'for': ['fennel']}
+Plug 'bakpakin/fennel.vim', {'for': 'fennel'}
 
 call plug#end()
 
@@ -324,3 +331,15 @@ filetype plugin on
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 
+
+"""""""""""""""""""
+" Fennel
+"""""""""""""""""""
+augroup Fennel_Support
+    au!
+    " Enable Paredit for fennel files
+    au FileType fnl call PareditInitBuffer()
+augroup END
+
+let g:sexp_enable_insert_mode_mappings = 0
+let g:sexp_filetypes = 'fennel'
