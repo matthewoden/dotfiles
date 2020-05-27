@@ -60,16 +60,3 @@
   command: "brew bundle chdir=$HOME"
   when: install_bundle
 
-- name: See if OpenSSL library is linked
-  shell: brew doctor 2>&1 | sed -ne '/You may wish to `brew unlink` these brews:/,$p' | grep openssl
-  register: openssl_linked
-  ignore_errors: True
-  changed_when: False 
-  when: ansible_distribution == 'MacOSX' and ansible_distribution_version.startswith('10.11')
-
-- name: For linking of OpenSSL library and headers on El Capitan
-  homebrew:
-    name: openssl
-    state: linked
-    install_options: force
-  when: ansible_distribution == 'MacOSX' and ansible_distribution_version.startswith('10.11') and openssl_linked.rc != 0
