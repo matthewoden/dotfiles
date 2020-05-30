@@ -1,0 +1,48 @@
+---
+
+- name: Add node plugin to asdf
+  command: "$HOME/.asdf/bin/asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
+  register: node_add
+  failed_when: node_add == 1
+
+- name: Add release team keyring
+  command: "bash -lc $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+  args:
+    creates: "$HOME/.asdf/keyrings/nodejs/pubring.gpg"
+
+- name: "Install nodejs versions"
+  command: "$HOME/.asdf/bin/asdf install nodejs {{ item }}"
+  loop: "{{ node_versions }}"
+  when: node_add.rc != 1
+
+- name: Set global version for node to {{ node_versions[0] }}
+  command: "$HOME/.asdf/bin/asdf global nodejs {{ node_versions[0] }}"
+  when: node_add.rc != 1
+
+
+- name: Check if node.bash file exists 
+  stat:
+    path: "$HOME/.bash_projects/node.bash"
+  register: nodesh
+  
+- name: Backup if node.bash file exists 
+  command: "mv $HOME/.bash_projects/node.bash $HOME/.bash_projects/node.bash.bak"
+  args:
+    creates: "$HOME/.bash_projects/node.bash.bak"
+  when: nodesh.stat.exists
+
+- name: Link node.bash file 
+  file:
+    src: "{{ role_path }}/files/node.bash"
+    dest: "$HOME/.bash_projects/node.bash"
+    state: link
+    force: yes
+
+- name: Install global packages
+  command: "npm i -g {{ item.name }}@{{ item.version }}"
+  environment: 
+    ASDF_SKIP_RESHIM: 1
+  loop: "{{ node_global_packages }}"
+
+- name: Reshim global packages
+  command: "$HOME/.asdf/bin/asdf reshim nodejs"

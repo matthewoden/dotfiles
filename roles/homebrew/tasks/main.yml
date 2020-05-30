@@ -13,7 +13,7 @@
   command: "brew update"
   when: 
     - homebrew_check.stat.exists
-    - upgrade_homebrew_packages
+    - homebrew_upgrade_packages
 
 - name: Link brewfile 
   file:
@@ -25,7 +25,7 @@
 - name: Ensure MAS is installed.
   homebrew: "name=mas state=present"
   when:
-    - install_bundle
+    - homebrew_install_bundle
 
 - name: Get MAS account status
   command: mas account

@@ -1,0 +1,19 @@
+---
+- name: Check if compiler is installed. 
+  stat:
+    path: /usr/local/bin/elm
+  register: elm_check
+
+- name: Download elm compiler
+  get_url:
+    url: "https://github.com/elm/compiler/releases/download/{{ elm_version }}0.19.1/binary-for-mac-64-bit.gz"
+    dest: /tmp/elm.gz
+    mode: 0755
+  when: elm_check.stat.exists == False
+  register: fetch_elm
+
+- name: Unzip elm compiler and put on path
+  unarchive:
+    src: /tmp/elm.gz
+    dest: /usr/local/bin/
+  when: elm_check.stat.exists == False and fetch_elm.rc == 1

@@ -5,9 +5,9 @@
   register: elixir_add
   failed_when: elixir_add == 1
 
-- name: "Install elixir versions"
-  command: asdf install elixir {{item}}
-  loop: "{{versions}}"
+- name: Install elixir versions
+  command: "$HOME/.asdf/bin/asdf install elixir {{ item }}"
+  loop: "{{ elixir_versions}}"
 
-- name: Set global version for elixir to {{versions[0]}}
-  command: "asdf global elixir {{versions[0]}}" 
+- name: "Set global version for elixir to {{ elixir_versions[0] }}"
+  command: "$HOME/.asdf/bin/asdf global elixir {{ elixir_versions[0] }}" 

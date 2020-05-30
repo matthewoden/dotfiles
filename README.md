@@ -20,23 +20,37 @@ pip install --user ansible
 
 ```
 
-Then run the playbook!
+or with homebrew (though the playbook will do this for you.)
+
+Install homebrew:
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+... then install ansible:
+```
+brew install ansible
+```
+
+## Usage
+
+You can run the playbook with the following command
 
 ``` bash
 ansible-playbook -i "./inventory" "./main.yml"  --tags="all"
 ```
 
-Or, just with the binfile, passing in $tags.
+Or, just with the binfile, passing in $tags. Without any tag values, all roles will be run.
 
 ``` bash
-/bin/bootstrap rust #install rust.
+/bin/bootstrap rust #install rust
 ```
 
 
 Roles TODO:
 
-- [] fonts
-    - [] Powerline Modified SF Mono 
+- [x] fonts
+    - [x Powerline Modified SF Mono 
 - [x] xcode
 - [x] homebrew
     - [x] brew
@@ -46,22 +60,26 @@ Roles TODO:
     - [x] tmux-vim-navigator
     - [x] tmux-jump
     - [x] tmux-session
-- [] git
-- [] neovim 
+- [x] git
+    - [x] gitignore
+    - [x] gitconfig
+- [x] neovim 
     - [x] omni-vim
     - [x] tmux-vim-navigator
     - [x] plugins
     - [x] coc-extensions
 - [x] alacritty
     - [x] .alacritty.conf
-- [x] asdf-vm
-- [x] elixir
-- [x] erlang
-- [x] lua
-- [x] fennel
-- [x] node
-- [x] rust
-- [] go  
+- [] languages
+    - [x] asdf-vm
+    - [x] elixir
+    - [x] elm  
+    - [x] erlang
+    - [x] fennel
+    - [x] go  
+    - [x] lua
+    - [x] node
+    - [x] rust
 - [x] shell
     - [x] bash_profile
     - [x] bashrc

@@ -1,0 +1,67 @@
+---
+
+- name: Establish tarball name 
+  set_fact:
+    go_tarball: "go{{go_version}}.darwin-amd64.tar.gz"
+
+- name: Establish target go version
+  set_fact:
+    go_version_target: "go version go{{ go_version }} darwin/amd64"
+
+
+- name: Check if go is installed
+  stat:
+    path: "/usr/local/go/bin/go"
+  register: go_check
+    
+- name: Register the current Go version 
+  command: "/usr/local/go/bin/go version"
+  when: go_check.stat.exists
+  register: current_go_version
+
+- name: Download the Go tarball
+  get_url:
+    url: "https://dl.google.com/go/{{ go_tarball }}"
+    dest: "/tmp/{{ go_tarball }}"
+    checksum: sha256:{{ go_tarball_checksum }}
+  when:
+    - go_check.stat.exists == False or current_go_version.stdout != go_version_target
+
+- name: Establish need to install
+  set_fact:
+    go_should_install: go_check.stat.exists == False or current_go_version.stdout != go_version_target
+
+- name: Remove old installation of Go
+  become: yes
+  file:
+    path: /usr/local/go
+    state: absent
+  when: go_version_target|bool 
+
+- name: Extract the Go tarball if Go is not yet installed or not the desired version
+  become: yes
+  unarchive:
+    src: "/tmp/{{ go_tarball }}"
+    dest: /usr/local
+    copy: no
+  when: go_version_target|bool 
+
+- name: Check if go.bash file exists 
+  stat:
+    path: "$HOME/.bash_projects/go.bash"
+  register: gosh
+  
+- name: Backup if go.bash file already exists 
+  command: "mv $HOME/.bash_projects/go.bash $HOME/.bash_projects/go.bash.bak"
+  args:
+    creates: "$HOME/.bash_projects/go.bash.bak"
+  when: gosh.stat.exists
+
+- name: Link go.bash file 
+  file:
+    src: "{{ role_path }}/files/go.bash"
+    dest: "$HOME/.bash_projects/go.bash"
+    state: link
+    force: yes
+
+

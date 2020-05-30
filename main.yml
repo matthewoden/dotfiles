@@ -33,19 +33,31 @@
       tags:
         - tmux
 
-    # Languages
+    - role: fonts 
+      tags:
+        - fonts 
+    
+   # Languages
         
     - role: asdf
       tags:
         - asdf
 
-    - role: erlang
+    - role: elm 
       tags:
-        - erlang
+        - elm
 
     - role: elixir
       tags:
         - elixir
+
+    - role: erlang
+      tags:
+        - erlang
+
+    - role: go
+      tags: 
+        - go
 
     - role: lua
       tags:
@@ -54,6 +66,10 @@
     - role: fennel
       tags: 
         - fennel
+
+    - role: node
+      tags: 
+        - node
 
     - role: rust
       tags: 

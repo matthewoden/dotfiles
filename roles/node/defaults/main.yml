@@ -1,0 +1,14 @@
+---
+
+node_versions:
+  - 12.17.0
+
+
+node_global_packages:
+  - name: webpack-cli
+    version: latest
+    
+  - name: graphql-cli
+    version: latest
+  
+

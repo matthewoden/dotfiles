@@ -6,7 +6,7 @@
   register: rustsh_check
 
 - name: Backup rust script
-  command: mv ~/.bash_projects/rust.sh ~/.bash_projects/rust.sh.bak
+  command: "mv $HOME/.bash_projects/rust.bash $HOME/.bash_projects/rust.bash.bak"
   when: rustsh_check.stat.exists
 
 - name: Add rust scripts
@@ -25,3 +25,4 @@
   command: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
   when: rust_check.stat.exists ==  False
 
+# TODO, version management

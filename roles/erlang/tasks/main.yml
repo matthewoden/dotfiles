@@ -14,7 +14,7 @@
   vars:
   environment: 
     - KERL_CONFIGURE_OPTIONS: "--without-javac --with-ssl={{ openssl_path }}"
-  loop: "{{ versions }}"
+  loop: "{{ erlang_versions }}"
 
-- name: Set global version for erlang to {{versions[0]}}
-  command: "asdf global erlang {{versions[0]}}" 
+- name: Set global version for erlang to {{erlang_versions[0]}}
+  command: "asdf global erlang {{erlang_versions[0]}}" 

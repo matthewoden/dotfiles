@@ -1,0 +1,31 @@
+---
+
+- name: Check if SF Mono Powerline exists
+  stat:
+    path: "$HOME/Library/Fonts/SFMono-Regular.otf" 
+  register: sf_mono
+  changed_when: False
+
+- name: Create fonts directory
+  file:
+    path: "$HOME/www/fonts/"
+    state: directory
+  when: sf_mono.stat.exists == False 
+
+- name: Fetch SF Mono Powerline
+  git:
+    repo: https://github.com/Twixes/SF-Mono-Powerline.git
+    dest: "${HOME}/www/fonts/"
+  register: sf_mono_git
+  when: sf_mono.stat.exists == False
+ 
+- name: Link fonts to directory.
+  file:
+    src: "{{ item }}"
+    dest: "$HOME/Libary/Fonts/{{ item | basename }}"
+    state: link
+    force: yes
+  when:
+    - sf_mono_git | bool
+  with_fileglob: "~/www/fonts/SF-Mono-Powerline/**.otf"
+

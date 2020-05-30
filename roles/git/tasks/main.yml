@@ -3,22 +3,22 @@
 - name: Link global gitignore file
   file:
     src: "{{ role_path }}/files/gitignore_global.link"
-    dest: "{{ dotfiles_user_home }}/.gitignore_global"
+    dest: "$HOME/.gitignore_global"
     state: link
     force: yes
 
 - name: Check if gitconfig exists
   stat:
-    path: "{{ dotfiles_user_home }}/.gitconfig"
+    path: "$HOME/.gitconfig"
   register: gitconfig
 
 - name: Back up gitconfig
   command: mv ~/.gitconfig ~/.gitconfig.bak
   args:
-    creates: "{{ dotfiles_user_home }}/.gitconfig.bak"
+    creates: "$HOME/.gitconfig.bak"
   when: gitconfig.stat.exists
 
 - name: Make sure gitconfig is up to date
   template:
     src: "gitconfig.j2"
-    dest: "{{ dotfiles_user_home }}/.gitconfig"
+    dest: "$HOME/.gitconfig"

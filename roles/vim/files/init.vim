@@ -22,7 +22,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot' "lazy-load syntax hilighting and linting
 Plug 'jparise/vim-graphql'
 
-"git
+"git=
 Plug 'airblade/vim-gitgutter' " git gutters on buffers
 Plug 'tpope/vim-fugitive' " git integration
 Plug 'Xuyuanp/nerdtree-git-plugin' "git status in nerdtree
@@ -215,7 +215,7 @@ set sessionoptions-=blank
 
 " fuzzy find files
 noremap <Leader>p :FuzzyOpen<CR>
-
+noremap <C-f> :FuzzyGrep<CR>
 " better vertical movement
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
