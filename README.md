@@ -12,7 +12,7 @@ Python 3, and ansible.
 
 ### With pip
 
-Ansible can be installed with pip, the Python package manager. If pip isn’t already available on your system of Python, run the following commands to install it:
+Ansible can be installed with pip, the Python package manager. If pip isn’t already available your system with Python, run the following commands to install it:
 
 ``` bash
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
