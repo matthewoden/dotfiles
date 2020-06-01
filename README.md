@@ -53,7 +53,7 @@ ansible-playbook -i "./inventory" "./main.yml"  --ask-become-pass --tags="all"
 Or just with the binfile, passing in `$tags.` Without any tag values, all roles will be run.
 
 ``` bash
-/bin/bootstrap rust #install rust
+./bin/bootstrap rust #install rust
 ```
 
 
