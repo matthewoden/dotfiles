@@ -10,4 +10,11 @@
   loop: "{{ elixir_versions}}"
 
 - name: "Set global version for elixir to {{ elixir_versions[0] }}"
-  command: "$HOME/.asdf/bin/asdf global elixir {{ elixir_versions[0] }}" 
+  command: "$HOME/.asdf/bin/asdf global elixir {{ elixir_versions[0] }}"
+
+- name: Install phoenix framework
+  command: "$HOME/.asdf/shims/mix archive.install hex {{item.name}} {{ item.version }}"
+  loop: "{{ elixir_packages }}"
+
+- name: Reshim elixir.
+  command: "$HOME/.asdf/bin/asdf reshim elixir" 

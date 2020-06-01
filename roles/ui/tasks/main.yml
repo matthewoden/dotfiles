@@ -1,0 +1,84 @@
+---
+
+- name: Use Dark menu bar and Dock
+  osx_defaults: 
+    domain: NSGlobalDomain
+    key: AppleInterfaceStyle 
+    type: string 
+    value: Dark
+  notify:
+    - restart MenuBar
+    - restart Dock
+
+- name: Disable animations when opening and closing windows
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticWindowAnimationsEnabled
+    value: false
+    type: bool
+
+- name: Expand save dialogs by default
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSNavPanelExpandedStateForSaveMode
+    value: true
+    type: bool
+
+- name: Save dialogs should not default to iCloud
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSDocumentSaveNewDocumentsToCloud
+    value: false
+    type: bool
+
+- name: Expand print dialogs by default
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: PMPrintingExpandedStateForPrint
+    value: true
+    type: bool
+
+- name: Show hidden files by default
+  osx_defaults:
+    domain: com.apple.Finder 
+    key: AppleShowAllFiles
+    value: yes 
+    type: string
+  notify:
+    - restart Finder 
+
+- name: Save screen captures as PNG format instead of TIFF
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: type
+    value: PNG
+    type: string
+  notify:
+    - restart MenuBar
+
+- name: Add applications to dock, if installed
+  include: add_to_dock.yml
+  vars: 
+    name: "{{ item }}"
+  loop: "{{ ui_dock_icons }}"
+
+- name: Cleanup dock icons
+  include: remove_from_dock.yml
+  vars:
+    name: "{{ item }}"
+  loop:
+    - Siri
+    - Safari
+    - Launchpad
+    - Contacts
+    - Notes
+    - Reminders
+    - Maps
+    - Messages
+    - FaceTime
+    - iBooks
+    - iTunes
+    - Podcasts
+    - TV
+
+

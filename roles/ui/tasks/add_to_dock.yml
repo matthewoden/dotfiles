@@ -1,0 +1,28 @@
+---
+
+# Add an icon to the Dock.
+
+# NOTE: You'll need to define all these variables when including this file:
+#           * name: Name of the application or directory
+#           * after: Name of the icon to place this Dock icon after
+
+- name: Establish app path
+  set_fact: 
+    app_path: "$HOME/Application/{{ name }}.app"
+
+- name: Determine if {{ name }} is already in the Dock
+  command: dockutil --find '{{ name }}'
+  register: dock_icon
+  ignore_errors: true 
+  changed_when: false 
+
+- name: Determine if {{ name }} exists
+  stat:
+    path: app_path
+  register: app 
+
+- name: Add {{ name }} icon to the Dock
+  command: dockutil --add '{{ app_path }}' --label '{{ name }}' --replacing '{{ name }}' --before '{{ before | default("") }}' --after '{{ after | default("") }}'
+  when: dock_icon.rc != 0 and app.stat.exists == True
+  notify:
+    - restart Dock

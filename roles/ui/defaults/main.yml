@@ -1,0 +1,28 @@
+
+ui_application_path: "$HOME/Applications"
+
+
+ui_dock_icons:
+  - name: Alacritty
+    path: "{{ ui_application_path }}/Alacritty.app"
+  
+  - name: Brave Browser
+    path: "{{ ui_application_path }}/Brave Browser.app"
+
+  - name: Google Chrome
+    path: "{{ ui_application_path}}/Google Chrome.app"
+  
+  - name: Quiver
+    path: "{{ ui_application_path }}/Quiver.app"
+
+  - name: Insomnia
+    path: "{{ ui_application_path }}/Insomnia.app"
+
+  - name: Dash
+    path: "{{ ui_application_path }}/Dash.app"
+
+  - name: Sketch
+    path: "{{ ui_application_path }}/Sketch.app"
+
+  - name: Pixelmator
+    path: "{{ ui_application_path}}/Pixelmator.app"

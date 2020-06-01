@@ -1,20 +1,26 @@
 # Brew
 
+tap "cloudfoundry/tap"
+tap "heroku/brew"
+
 brew "autoconf"
 brew "bash-completion"
 brew "bash-git-prompt"
-brew "cloudfoundry/tap/cf-cli"
+brew "cf-cli"
 brew "coreutils"
 brew "docker-compose"
+brew "dockutil"
 brew "fzf"
 brew "fzy" # TODO - consolidate scripts to just use one.
 brew "git-lfs"
 brew "gnu-tar"
 brew "gpg"
+brew "heroku"
 brew "jq"
 brew "kubectl"
 brew "mas" # TODO - will a brewfile that uses mas, auto-install mas?
 brew "neovim"
+brew "postgres"
 brew "python"
 brew "ripgrep"
 brew "terraform"
@@ -25,10 +31,18 @@ brew "vault"
 brew "wxmac"
 
 # Cask
+cask "1password"
 cask "alacritty"
+cask "balenaetcher"
 cask "brave-browser"
+cask "dash"
 cask "docker"
+cask "google-chrome"
+cask "insomnia"
+cask "kaleidoscope"
+cask "karabiner-elements"
 cask "spotify"
+cask "sqlitestudio"
 
 # Mac app store
 mas "Xcode" , id: 497799835 

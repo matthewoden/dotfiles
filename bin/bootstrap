@@ -7,4 +7,4 @@ if [ -z $tags ]; then
   tags="all"
 fi
 
-ansible-playbook -i "$PWD/inventory" "$PWD/main.yml" -v --ask-become-pass --tags $tags 
+ansible-playbook -i "$PWD/inventory" "$PWD/main.yml" --ask-become-pass --tags $tags 

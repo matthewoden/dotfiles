@@ -2,11 +2,13 @@
 - name: Set up local workstation
   hosts: local
   roles:
+    
     # Tools 
 
     - role: xcode
       tags: 
         - xcode
+        - os
 
     - role: bash
       tags: 
@@ -74,3 +76,14 @@
     - role: rust
       tags: 
         - rust
+
+    # OS
+    - role: trackpad
+      tags:
+        - os
+        - trackpad
+
+    - role: ui
+      tags:
+        - os
+        - ui

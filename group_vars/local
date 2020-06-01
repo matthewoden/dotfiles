@@ -14,9 +14,25 @@ git_full_name: Matthew Potter
 git_user: matthewoden
 git_email: heymatthewoden@gmail.com
 
+# OS X UI
+# -------
+
+
+ui_dock_icons:
+  - Alacritty 
+  - Brave Browser
+  - Google Chrome 
+  - Quiver
+  - Insomnia
+  - Dash
+  - Sketch
+  - Pixelmator
+  - Slack
+  - Spotify
+  - Kaleidoscope
+
 # Languges
 # --------
-
 
 # elixir
 # ------
@@ -25,6 +41,12 @@ elixir_versions:
   - 1.10.2
   - 1.10.1
 
+elixir_packages:
+  - name: phx_new
+    version: 1.5.3
+
+  - name: mix_bump
+    version: 0.1.0
 # elm
 # ---
 
