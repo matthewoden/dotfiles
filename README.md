@@ -30,7 +30,7 @@ pip install --user ansible
 
 Homebrew installs ansible, yet this playbook handles installing homebrew! So that's a fun chicken and egg problem.
 
-So homebrew isn't already on your machine - live dangerously and excecute a remote shell script:
+If homebrew isn't already on your machine - live dangerously and excecute a remote shell script:
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
