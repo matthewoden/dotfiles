@@ -151,6 +151,9 @@ Or just with the binfile, passing in `$tags.` Without any tag values, all roles 
 
 # TODO
 
+- ASDF language module
+    - better checks for changes
+    
 - Chrome / Brave Extensions
 - key bindings
     - capslock as escape
