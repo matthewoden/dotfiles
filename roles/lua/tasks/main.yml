@@ -3,7 +3,13 @@
 - name: Add lua plugin to asdf
   command: "${HOME}/.asdf/bin/asdf plugin-add lua"
   register: lua_add 
-  failed_when: lua_add == 1
+  failed_when: lua_add.rc == 1
+
+- name: Update lua plugin
+  command: "${HOME}/.asdf/bin/asdf plugin-update lua"
+  when: lua_add.rc == 2
+  register: lua_update
+  changed_when: lua_update.rc == 0
 
 - name: "Install lua versions"
   command: "$HOME/.asdf/bin/asdf install lua {{ item }}"

@@ -9,8 +9,15 @@
   command: "$HOME/.asdf/bin/asdf install elixir {{ item }}"
   loop: "{{ elixir_versions}}"
 
+# TODO - handle changes/failure better here.
 - name: "Set global version for elixir to {{ elixir_versions[0] }}"
   command: "$HOME/.asdf/bin/asdf global elixir {{ elixir_versions[0] }}"
+
+- name: add local hex
+  command: "$HOME/.asdf/shims/mix local.hex --force"
+
+- name: add local rebar
+  command: "$HOME/.asdf/shims/mix local.rebar --force"
 
 - name: Install phoenix framework
   command: "$HOME/.asdf/shims/mix archive.install hex {{item.name}} {{ item.version }}"

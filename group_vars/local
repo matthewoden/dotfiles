@@ -56,7 +56,7 @@ elm_version: 0.19.1
 # ------
 
 erlang_versions: 
-  - 22.2.7
+  - 23.0.1
 
 # fennel
 # ------
@@ -85,4 +85,4 @@ node_global_packages:
 # ---
 
 lua_versions:
-  - 5.3.5
+  - 5.3.4

@@ -4,16 +4,26 @@
     path: /usr/local/bin/elm
   register: elm_check
 
+# TODO: ensure elm is expected version, like go.
+
 - name: Download elm compiler
   get_url:
-    url: "https://github.com/elm/compiler/releases/download/{{ elm_version }}0.19.1/binary-for-mac-64-bit.gz"
+    url: "https://github.com/elm/compiler/releases/download/{{ elm_version }}/binary-for-mac-64-bit.gz"
     dest: /tmp/elm.gz
+    force: yes
     mode: 0755
   when: elm_check.stat.exists == False
   register: fetch_elm
 
-- name: Unzip elm compiler and put on path
-  unarchive:
-    src: /tmp/elm.gz
-    dest: /usr/local/bin/
-  when: elm_check.stat.exists == False and fetch_elm.rc == 1
+
+- name: Uncompress elm compiler
+  command: "gunzip /tmp/elm.gz"
+  args:
+    creates: "/tmp.elm" 
+  when: 
+    - fetch_elm | bool 
+    - fetch_elm.status_code == 200
+
+- name: Move elm to path
+  command: "mv /tmp/elm /usr/local/bin/elm"
+  when: elm_check.stat.exists == False 

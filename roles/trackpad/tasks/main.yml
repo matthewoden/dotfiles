@@ -32,7 +32,7 @@
   osx_defaults:
     domain: "{{ item }}"
     key: TrackpadThreeFingerDrag
-    value: "TRUE"
+    value: true
     type: bool
   with_items:
     - com.apple.driver.AppleBluetoothMultitouch.trackpad
@@ -43,9 +43,8 @@
   osx_defaults:
     domain: com.apple.universalaccess
     key: closeViewScrollWheelToggle
-    value: "TRUE"
+    value: true
     type: bool
-    become: TRUE
 
 - name: Enable scroll-to-zoom when Control key is held down
   osx_defaults:

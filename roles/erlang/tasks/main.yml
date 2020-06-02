@@ -3,18 +3,28 @@
 - name: Add erlang plugin to asdf
   command: "${HOME}/.asdf/bin/asdf plugin-add erlang"
   register: erlang_add
-  failed_when: erlang_add == 1
+  failed_when: erlang_add.rc == 1
+
+- name: Update erlang plugin
+  command: "${HOME}/.asdf/bin/asdf plugin-update erlang"
+  when: erlang_add.rc == 2
+  register: erlang_update
+  changed_when: erlang_update.rc == 0
 
 - name: "Get openSSL"
-  command: "brew --prefix openssl"
+  shell:
+    cmd: "brew --prefix openssl"
+  args:
+    executable: /bin/bash
   register: openssl_path
 
 - name: "Install erlang versions"
   command: "${HOME}/.asdf/bin/asdf install erlang {{ item }}"
-  vars:
-  environment: 
-    - KERL_CONFIGURE_OPTIONS: "--without-javac --with-ssl={{ openssl_path }}"
+  environment:
+    - KERL_CONFIGURE_OPTIONS: "--without-javac --with-ssl={{ openssl_path.stdout }}"
+  register: erlang_install
+  changed_when: erlang_install.rc == 0
   loop: "{{ erlang_versions }}"
 
 - name: Set global version for erlang to {{erlang_versions[0]}}
-  command: "asdf global erlang {{erlang_versions[0]}}" 
+  command: "asdf global erlang {{erlang_versions[0]}}"

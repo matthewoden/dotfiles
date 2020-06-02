@@ -21,7 +21,7 @@
 
 - name: Download the Go tarball
   get_url:
-    url: "https://dl.google.com/go/{{ go_tarball }}"
+    url: "https://gomirrors.org/dl/go/{{ go_tarball }}"
     dest: "/tmp/{{ go_tarball }}"
     checksum: sha256:{{ go_tarball_checksum }}
   when:
