@@ -47,10 +47,12 @@ Plug 'guns/vim-sexp', {'for': ['fennel']}
 Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['fennel']}
 Plug 'kovisoft/paredit', {'for': ['fennel']}
 Plug 'bakpakin/fennel.vim', {'for': 'fennel'}
-
+Plug 'hkupty/iron.nvim'
 call plug#end()
 
 
+" Lua plugins!
+luafile $HOME/.config/nvim/plugins.lua
 
 """
 " Theme
@@ -210,7 +212,8 @@ set sessionoptions-=blank
 """""""""""
 " map leader to space
 :let mapleader = "\<Space>"
-
+" local leader to slash
+:let maplocalleader = "\\"
 "nnoremap <Leader>s :ToggleWorkspace<CR>
 
 " fuzzy find files
@@ -221,7 +224,7 @@ nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 
 nnoremap <Leader>mv :Move<SPACE>
-nnoremap <Leader>de :Delete<CR`>
+nnoremap <Leader>de :Delete<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " nnoremap <Leader>q :q<CR>

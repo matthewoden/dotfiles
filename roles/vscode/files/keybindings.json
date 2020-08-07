@@ -1,0 +1,31 @@
+[
+  // Place your key bindings in this file to overwrite the defaults
+  {
+    "key": "cmd+shift+l",
+    "command": "editor.action.insertCursorAtEndOfEachLineSelected",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown"
+  },
+  { "key": "ctrl+n", "command": "explorer.newFile", "when": "!editorFocus" },
+
+  {
+    "key": "ctrl+shift+n",
+    "command": "explorer.newFolder",
+    "when": "!editorFocus"
+  }
+]

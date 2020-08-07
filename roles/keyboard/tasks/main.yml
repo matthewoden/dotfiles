@@ -1,5 +1,4 @@
 ---
-
 # Allow tab to move between all controls, not just text boxes and drop-downs.
 # Preferences -> Keyboard -> Shortcuts -> Full Keyboard Access
 - name: Enable full keyboard access for all controls in windows and dialogs
@@ -15,11 +14,21 @@
   osx_defaults:
     domain: NSGlobalDomain
     key: "{{ item }}"
-    value: FALSE
+    value: False
     type: bool
   with_items:
     - NSAutomaticQuoteSubstitutionEnabled
     - NSAutomaticDashSubstitutionEnabled
 
-
+# vim support in vscode
+- name: Disable Press and hold to repeat for VSCode
+  osx_defaults:
+    domain: "{{ items }}"
+    key: ApplePressAndHoldEnabled
+    value: False
+    type: bool
+  with_items:
+    - com.microsoft.VSCode
+    - com.microsoft.VSCodeInsiders
+    - com.visualstudio.code.oss
 # TOOO: Remap capslock to escape
