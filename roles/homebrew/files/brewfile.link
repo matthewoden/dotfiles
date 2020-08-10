@@ -21,7 +21,7 @@ brew "jq"
 brew "kubectl"
 brew "mas" # TODO - will a brewfile that uses mas, auto-install mas?
 brew "neovim"
-brew "postgres"
+#brew "postgres"
 brew "python"
 brew "ripgrep"
 brew "terraform"
@@ -46,12 +46,12 @@ cask "spotify"
 cask "sqlitestudio"
 cask "visual-studio-code"
 
-# Mac app store
-mas "Xcode" , id: 497799835 
-mas "The Unarchiver" , id: 425424353 
-mas "Unsplash Wallpapers" , id: 1284863847 
-mas "Quiver" , id: 866773894 
-mas "Slack" , id: 803453959 
-mas "Pixelmator" , id: 407963104 
-mas "Encrypto" , id: 935235287 
-mas "Timelime", id: 589698946 
+# # Mac app store
+# mas "Xcode" , id: 497799835
+# mas "The Unarchiver" , id: 425424353
+# mas "Unsplash Wallpapers" , id: 1284863847
+# mas "Quiver" , id: 866773894
+# mas "Slack" , id: 803453959
+# mas "Pixelmator" , id: 407963104
+# mas "Encrypto" , id: 935235287
+# mas "Timelime", id: 589698946

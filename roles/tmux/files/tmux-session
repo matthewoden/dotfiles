@@ -35,7 +35,7 @@ else
   # we're already in a client? Neat. Let's make a new session with the
   # target name in the background...
   if ! tmux has-session -t "$SESSION" > /dev/null; then
-    tmux new-session -ds "$SESSION" -c "$ROOT"
+    tmux new-session -ds "$SESSION" -c "$ROOT" "tmuxifier load-window tmux-laptop"
   fi
   # ... and then switch our current client to it!
   exec tmux switch-client -t "$SESSION"

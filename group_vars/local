@@ -11,8 +11,8 @@ homebrew_install_bundle: True
 # ---
 
 git_full_name: Matthew Potter
-git_user: matthewoden
-git_email: heymatthewoden@gmail.com
+git_user: mopott 
+git_email: mopott@monsanto.com
 
 # OS X UI
 # -------

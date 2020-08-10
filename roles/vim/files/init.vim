@@ -21,8 +21,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot' "lazy-load syntax hilighting and linting
 Plug 'jparise/vim-graphql'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-"git=
+"git
 Plug 'airblade/vim-gitgutter' " git gutters on buffers
 Plug 'tpope/vim-fugitive' " git integration
 Plug 'Xuyuanp/nerdtree-git-plugin' "git status in nerdtree
@@ -89,6 +90,13 @@ set wildmenu        " display complete options as a menu
 set undofile
 set undodir^=~/.vim/undo//
 
+" folds
+
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 " always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
@@ -141,7 +149,7 @@ set splitright
 " autosave on leave
 augroup autosave_buffer
   au!
-  au FocusLost,FocusGained,BufLeave,InsertLeave * silent! :wa " TODO: write session.
+  au FocusLost,FocusGained,BufLeave * silent! :wa " TODO: write session.
 augroup END
 
 " When editing a file, always jump to the last known cursor position.
@@ -264,7 +272,7 @@ xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ac  <Plug>(coc-codeaction)<CR>
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -327,6 +335,11 @@ let g:airline_left_sep=''
 "let g:airline_left_sep=''
 "let g:airline_right_sep="\uE0B3"
 
+"""
+" Markdown-preview
+""""""""""
+
+let g:mkdp_auto_start = 0
 """
 " NerdCommenter
 """"""""""""""

@@ -28,6 +28,8 @@ Temporary Items
 # IDE
 .vscode
 .vim
+Session.vim
+.undodir
 
 # git has its own built in compression methods
 *.7z
@@ -50,3 +52,5 @@ node_modules/
 
 # Elixir
 .elixir_ls
+.hex
+.rebar

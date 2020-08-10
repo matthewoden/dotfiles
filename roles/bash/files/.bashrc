@@ -1,16 +1,13 @@
 
-# if not running interactively, return. 
+# if not running interactively, return.
 [[ $- != *i* ]] && return
 
 # add completion when available
-# [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
-export BASH_COMPLETION_USER_DIR="$HOME/.bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-alias cp="cp -i"                          # confirm before overwriting something 
+alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB 
+alias free='free -m'                      # show sizes in MB
 alias more=less                           # use less for everything
 
 # default to using colors.
@@ -31,11 +28,11 @@ if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     # perfomance for large git repos/changes
     GIT_PROMPT_SHOW_UNTRACKED_FILES=no
 
-    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" 
+    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
     source "/usr/local/opt/bash-git-prompt/share/prompt-colors.sh"
     # theme overrides
     GIT_PROMPT_START_USER="${Magenta}\u${ResetColor} in ${Green}\w${ResetColor}\n"
-    GIT_PROMPT_START_ROOT="${Magenta}\u${ResetColor} in ${Green}\w${ResetColor}\n" 
+    GIT_PROMPT_START_ROOT="${Magenta}\u${ResetColor} in ${Green}\w${ResetColor}\n"
     GIT_PROMPT_END_USER=" ${White}${ResetColor}$ "
     GIT_PROMPT_END_ROOT=" ${White}${ResetColor}# "
 
@@ -53,7 +50,7 @@ shopt -s checkwinsize
 # expand aliases when completing
 shopt -s expand_aliases
 
-# Enable history appending instead of overwriting. 
+# Enable history appending instead of overwriting.
 shopt -s histappend
 
 # # ex - archive extractor
