@@ -114,7 +114,7 @@
     }
   ],
   "vim.leader": "<space>",
-  "vim.statusBarColorControl": true,
+  "vim.statusBarColorControl": false,
   "vim.statusBarColors.normal": ["#ff79c6", "#282a36"],
   "vim.statusBarColors.insert": ["#50fa7b", "#282a36"],
   "vim.statusBarColors.visual": ["#f1fa8c", "#282a36"],
@@ -128,11 +128,11 @@
   "vim.statusBarColors.surroundinputmode": "#007ACC",
   "vim.enableNeovim": true,
   "workbench.colorCustomizations": {
-    "editorLineNumber.activeForeground": "#f1fa8c",
-    "statusBar.background": "#ff79c6",
-    "statusBar.noFolderBackground": "#ff79c6",
-    "statusBar.debuggingBackground": "#ff79c6",
-    "statusBar.foreground": "#282a36"
+    // "editorLineNumber.activeForeground": "#f1fa8c",
+    // "statusBar.background": "#f1fa8c",
+    // "statusBar.noFolderBackground": "#f1fa8c",
+    // "statusBar.debuggingBackground": "#f1fa8c",
+    // "statusBar.foreground": "#282a36"
   },
   "terminal.explorerKind": "external",
   "terminal.external.osxExec": "Alacritty.app",
