@@ -1,140 +1,189 @@
 {
-  "workbench.colorTheme": "Dracula",
-  "window.zoomLevel": 1,
-  "editor.rulers": [72, 80],
-  "editor.formatOnSave": true,
-  "eslint.codeActionsOnSave.mode": "problems",
-  "workbench.startupEditor": "welcomePage",
-  "rust.rustup": {
-    "toolchain": "stable-x86_64-apple-darwin",
-    "nightlyToolchain": "nightly-x86_64-apple-darwin"
-  },
-  "rust.mode": "rls",
-  "rust.rls": {
-    "useRustfmt": true
-  },
-  "editor.detectIndentation": false,
-  "explorer.confirmDragAndDrop": false,
-  "editor.tabSize": 2,
-  "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
-    "suppressResultsExplorerNotice": false,
-    "suppressShowKeyBindingsNotice": true,
-    "suppressUpdateNotice": true,
-    "suppressWelcomeNotice": false
-  },
-  "git.autofetch": true,
-  "files.associations": {
-    "*.jsx": "javascriptreact",
-    "*.rkt": "racket"
-  },
-  "gitlens.keymap": "alternate",
-  "workbench.activityBar.visible": true,
-  "gitlens.historyExplorer.enabled": true,
-  "gitlens.views.fileHistory.enabled": true,
-  "gitlens.views.lineHistory.enabled": true,
-  "debug.console.fontSize": 14,
-  "editor.fontFamily": "'SF Mono', PragmataPro, Monaco, 'Courier New', monospace",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "sync.gist": "5c2a69f68ccdab1d51f211cc4931e162",
-  "sync.quietSync": true,
-  "indentRainbow.colors": [
-    "rgba(255,255,64,0.03)",
-    "rgba(127,255,127,0.03)",
-    "rgba(255,127,255,0.03)",
-    "rgba(79,236,236,0.03)"
-  ],
-  "indentRainbow.errorColor": "",
-  "indentRainbow.tabmixColor": "",
-  "indentRainbow.ignoreErrorLanguages": ["racket", "scheme"],
-  "terminal.integrated.fontWeightBold": "500",
-  "editor.fontWeight": "300",
-  "editor.lineNumbers": "relative",
-  "go.formatTool": "goimports",
-  "go.useLanguageServer": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "html.format.enable": false,
-  "search.useGlobalIgnoreFiles": true,
-  "python.linting.pylintArgs": ["--generate-members"],
-  "vim.smartcase": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    // better vertical movement
-    { "before": ["K"], "commands": ["editor.action.showHover"] },
-    { "before": ["<Leader>", "r", "n"], "after": ["editor.action.rename"] },
-    {
-      "before": ["<silent>", "g", "d"],
-      "commands": ["editor.action.revealDefinition"]
+    "editor.autoIndent": "advanced",
+    "editor.renderWhitespace": "selection",
+    "editor.rulers": [72, 80],
+    "explorer.confirmDragAndDrop": false,
+    // f
+    "files.associations": {
+        "*.graphqls": "graphql",
+        "*.jsx": "javascriptreact"
     },
-    {
-      "before": ["<silent>", "g", "r"],
-      "commands": ["editor.action.goToReferences"]
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onFocusChange",
+    // g
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": true,
+        "suppressNoRepositoryWarning": false,
     },
-    { "before": ["<Leader>", "a"], "commands": ["editor.action.quickFix"] },
-    { "before": ["<expr>", "k"], "after": ["(v:count == 0 ? 'gk' : 'k')"] },
-    { "before": ["<expr>", "j"], "after": ["(v:count == 0 ? 'gj' : 'j')"] },
-    { "before": ["<Leader>", "m", "v"], "after": [":Move", "<SPACE>"] },
-    { "before": ["<Leader>", "d", "e"], "after": [":Delete", "<CR>"] },
-    {
-      "before": ["<Leader>", "w"],
-      "commands": ["workbench.action.files.save"]
+    //h
+    "http.proxyStrictSSL": false,
+    // n
+    "npm-intellisense.scanDevDependencies": true,
+    //p
+    "prettier.tabWidth": 4,
+    // w
+    "window.title": "${activeEditorLong}${separator}${rootName} ${dirty}",
+    "workbench.colorTheme": "Dracula",
+    "workbench.iconTheme": "material-icon-theme",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "gitlens.keymap": "alternate",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "breadcrumbs.enabled": true,
+    "[elixir]": {
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
     },
-    { "before": ["<Leader>", "n"], "commands": ["workbench.view.explorer"] },
-    // better navigation - center screen when moving around
-    { "before": ["<silent>", "<C-u>"], "after": ["<C-u>", "zz"] },
-    {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
+    "terminal.external.osxExec": "Alacritty.app",
+    "editor.fontFamily": "'SF Mono Powerline',PragmataPro,'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "workbench.fontAliasing": "auto",
+    "terminal.integrated.fontWeight": "400",
+    "terminal.integrated.fontWeightBold": "normal",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "editor.fontWeight": "300",
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
     },
-    {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
-    }
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
+    "gitlens.blame.ignoreWhitespace": true,
+    "window.openFilesInNewWindow": "on",
+    "sync.gist": "5c2a69f68ccdab1d51f211cc4931e162",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
     },
-    {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
-    }
-  ],
-  "vim.leader": "<space>",
-  "vim.statusBarColorControl": true,
-  "vim.statusBarColors.normal": ["#ff79c6", "#282a36"],
-  "vim.statusBarColors.insert": ["#50fa7b", "#282a36"],
-  "vim.statusBarColors.visual": ["#f1fa8c", "#282a36"],
-  "vim.statusBarColors.visualline": ["#f1fa8c", "#282a36"],
-  "vim.statusBarColors.visualblock": ["#f1fa8c", "#282a36"],
-  "vim.statusBarColors.replace": "#D08770",
-  "vim.statusBarColors.commandlineinprogress": "#007ACC",
-  "vim.statusBarColors.searchinprogressmode": "#007ACC",
-  "vim.statusBarColors.easymotionmode": "#007ACC",
-  "vim.statusBarColors.easymotioninputmode": "#007ACC",
-  "vim.statusBarColors.surroundinputmode": "#007ACC",
-  "vim.enableNeovim": true,
-  "workbench.colorCustomizations": {
-    "editorLineNumber.activeForeground": "#f1fa8c",
-    "statusBar.background": "#ff79c6",
-    "statusBar.noFolderBackground": "#ff79c6",
-    "statusBar.debuggingBackground": "#ff79c6",
-    "statusBar.foreground": "#282a36"
-  },
-  "terminal.explorerKind": "external",
-  "terminal.external.osxExec": "Alacritty.app",
-  "eslint.alwaysShowStatus": true
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "vim.smartcase": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // better vertical movement
+        { "before": ["K"], "commands": ["editor.action.showHover"] },
+        { "before": ["<Leader>", "r", "n"], "after": ["editor.action.rename"] },
+        {
+            "before": ["g", "d"],
+            "commands": ["editor.action.revealDefinition"]
+        },
+        {
+            "before": ["g", "r"],
+            "commands": ["editor.action.goToReferences"]
+        },
+        { "before": ["<Leader>", "a"], "commands": ["editor.action.quickFix"] },
+        { "before": ["<expr>", "k"], "after": ["(v:count == 0 ? 'gk' : 'k')"] },
+        { "before": ["<expr>", "j"], "after": ["(v:count == 0 ? 'gj' : 'j')"] },
+        { "before": ["<Leader>", "m", "v"], "after": [":Move", "<SPACE>"] },
+        { "before": ["<Leader>", "d", "e"], "after": [":Delete", "<CR>"] },
+        {
+            "before": ["<Leader>", "w"],
+            "commands": ["workbench.action.files.save"]
+        },
+        {
+            "before": ["<Leader>", "n"],
+            "commands": ["workbench.view.explorer"]
+        },
+        // better navigation - center screen when moving around
+        { "before": ["<silent>", "<C-u>"], "after": ["<C-u>", "zz"] },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.statusBarColorControl": false,
+    "vim.statusBarColors.normal": ["#ff79c6", "#282a36"],
+    "vim.statusBarColors.insert": ["#50fa7b", "#282a36"],
+    "vim.statusBarColors.visual": ["#f1fa8c", "#282a36"],
+    "vim.statusBarColors.visualline": ["#f1fa8c", "#282a36"],
+    "vim.statusBarColors.visualblock": ["#f1fa8c", "#282a36"],
+    "vim.statusBarColors.replace": "#D08770",
+    "vim.statusBarColors.commandlineinprogress": "#007ACC",
+    "vim.statusBarColors.searchinprogressmode": "#007ACC",
+    "vim.statusBarColors.easymotionmode": "#007ACC",
+    "vim.statusBarColors.easymotioninputmode": "#007ACC",
+    "vim.statusBarColors.surroundinputmode": "#007ACC",
+    "vim.enableNeovim": true,
+    "workbench.colorCustomizations": {
+        // "editorLineNumber.activeForeground": "#8aff80",
+        // "statusBar.background": "#8aff80",
+        // "statusBar.noFolderBackground": "#8aff80",
+        // "statusBar.debuggingBackground": "#8aff80",
+        // "statusBar.foreground": "#282a36"
+    },
+    "editor.lineNumbers": "on",
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "files.insertFinalNewline": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "yaml.customTags": [
+        "!And",
+        "!If",
+        "!Not",
+        "!Equals",
+        "!Or",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Join sequence"
+    ],
+    "yaml.format.enable": true,
+    "python.pythonPath": "/usr/local/bin/python3",
+    "python.languageServer": "Pylance",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "go.toolsManagement.autoUpdate": true,
+    "editor.tabSize": 8,
+    "editor.cursorStyle": "line",
+    "editor.insertSpaces": false,
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off"
 }

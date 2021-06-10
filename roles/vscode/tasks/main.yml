@@ -1,8 +1,8 @@
 ---
-- name: Establish vscode directory name 
+- name: Establish vscode directory name
   set_fact:
-    vscode_dir: "$HOME/Library/Application Support/Code/User"
-  
+    vscode_dir: $HOME/Library/Application Support/Code/User
+
 - name: Check if VSCode settings exists
   stat:
     path: "{{ vscode_dir }}/settings.json"
@@ -26,7 +26,7 @@
     path: "{{ vscode_dir }}keybindings.json"
   register: keybindings_check
 
-- name: Backup settings.json
+- name: Backup keybindings.json
   command: "mv {{ vscode_dir }}/keybindings.json {{ vscode_dir }}/keybindings.json.bak"
   args:
     creates: "{{ vscode_dir }}/keybindings.json.bak"

@@ -1,8 +1,10 @@
+#! /usr/bin/env bash
 
 # if not running interactively, return.
 [[ $- != *i* ]] && return
 
 # add completion when available
+# shellcheck disable=SC1091
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 alias cp="cp -i"                          # confirm before overwriting something
@@ -77,9 +79,14 @@ ex () {
 }
 
 # load individual bash projects, skip .bak
-for f in ~/.bash_projects/*; do
-    if [[ $f =~ \.bash$ ]]; then
-        . $f
+for filename in ~/.bash_projects/*; do
+    if [[ $filename =~ \.bash$ ]]; then
+        # shellcheck source=/dev/null
+        . "$filename"
     fi
 done
 
+# doom emacs
+export EDITOR="code -w"
+
+export HISTTIMEFORMAT='%F %T '
