@@ -2,8 +2,8 @@
     "editor.autoIndent": "advanced",
     "editor.renderWhitespace": "selection",
     "editor.rulers": [72, 80],
-    "explorer.confirmDragAndDrop": false,
-    // f
+  "explorer.confirmDragAndDrop": false,
+    
     "files.associations": {
         "*.graphqls": "graphql",
         "*.jsx": "javascriptreact"
