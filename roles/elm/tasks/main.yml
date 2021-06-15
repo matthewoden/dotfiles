@@ -1,8 +1,13 @@
 ---
-- name: Check if compiler is installed. 
+- name: Check if compiler is installed.
   stat:
     path: /usr/local/bin/elm
   register: elm_check
+
+- name: Check if updated compiler is installed.
+  stat:
+    path: /tmp/elm
+  register: elm_tmp_check
 
 # TODO: ensure elm is expected version, like go.
 
@@ -19,11 +24,11 @@
 - name: Uncompress elm compiler
   command: "gunzip /tmp/elm.gz"
   args:
-    creates: "/tmp.elm" 
-  when: 
-    - fetch_elm | bool 
+    creates: "/tmp/elm"
+  when:
+    - fetch_elm | bool
     - fetch_elm.status_code == 200
 
 - name: Move elm to path
   command: "mv /tmp/elm /usr/local/bin/elm"
-  when: elm_check.stat.exists == False 
+  when: elm_tmp_check

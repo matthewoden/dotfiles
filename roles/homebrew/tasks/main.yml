@@ -11,11 +11,11 @@
 
 - name: Updating Homebrew
   command: "brew update"
-  when: 
+  when:
     - homebrew_check.stat.exists
     - homebrew_upgrade_packages
 
-- name: Link brewfile 
+- name: Link brewfile
   file:
     src: "{{ role_path }}/files/brewfile.link"
     dest: "$HOME/Brewfile"

@@ -27,7 +27,6 @@
     "prettier.tabWidth": 4,
     // w
     "window.title": "${activeEditorLong}${separator}${rootName} ${dirty}",
-    "workbench.colorTheme": "Dracula",
     "workbench.iconTheme": "material-icon-theme",
     "git.autofetch": true,
     "git.enableSmartCommit": true,
@@ -170,12 +169,9 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -185,5 +181,6 @@
     "editor.cursorStyle": "line",
     "editor.insertSpaces": false,
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-    "editor.wordWrap": "off"
+    "editor.wordWrap": "off",
+    "workbench.colorTheme": "Dracula"
 }

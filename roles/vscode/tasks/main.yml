@@ -1,7 +1,7 @@
 ---
 - name: Establish vscode directory name
   set_fact:
-    vscode_dir: $HOME/Library/Application Support/Code/User
+    vscode_dir: $HOME/Library/Application\ Support/Code/User
 
 - name: Check if VSCode settings exists
   stat:
@@ -17,7 +17,7 @@
 - name: Symlink settings.json
   file:
     src: "{{ role_path }}/files/settings.json"
-    dest: "{{ vscode_dir }}/settings.json"
+    dest: "$HOME/Library/Application Support/Code/User/settings.json"
     state: link
     force: yes
 
@@ -27,7 +27,7 @@
   register: keybindings_check
 
 - name: Backup keybindings.json
-  command: "mv {{ vscode_dir }}/keybindings.json {{ vscode_dir }}/keybindings.json.bak"
+  command: "mv $HOME/Library/Application Support/Code/User/keybindings.json {{ vscode_dir }}/keybindings.json.bak"
   args:
     creates: "{{ vscode_dir }}/keybindings.json.bak"
   when: keybindings_check.stat.exists
@@ -35,7 +35,7 @@
 - name: Symlink keybindings.json
   file:
     src: "{{ role_path }}/files/keybindings.json"
-    dest: "{{ vscode_dir }}/keybindings.json"
+    dest: "$HOME/Library/Application Support/Code/User/keybindings.json"
     state: link
     force: yes
 
