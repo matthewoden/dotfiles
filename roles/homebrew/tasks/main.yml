@@ -56,7 +56,7 @@
     # - mas_email | bool
     # - mas_password | bool
 
-- name: Install from Brewfile.
-  command: "brew bundle chdir=$HOME"
-  when: homebrew_install_bundle
+# - name: Install from Brewfile.
+#   command: "brew bundle chdir=$HOME"
+#   when: homebrew_install_bundle
 

@@ -3,21 +3,21 @@
     "editor.renderWhitespace": "selection",
     "editor.rulers": [72, 80],
   "explorer.confirmDragAndDrop": false,
-    
+
     "files.associations": {
-        "*.graphqls": "graphql",
-        "*.jsx": "javascriptreact"
+    "*.graphqls": "graphql",
+    "*.jsx": "javascriptreact"
     },
     "files.trimTrailingWhitespace": true,
     "files.autoSave": "onFocusChange",
     // g
     "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": true,
-        "suppressNoRepositoryWarning": false,
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": true,
+    "suppressNoRepositoryWarning": false,
     },
     //h
     "http.proxyStrictSSL": false,
@@ -34,9 +34,9 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "breadcrumbs.enabled": true,
     "[elixir]": {
-        "editor.detectIndentation": false,
-        "editor.tabSize": 2,
-        "editor.formatOnSave": true
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
     },
     "terminal.external.osxExec": "Alacritty.app",
     "editor.fontFamily": "'SF Mono Powerline',PragmataPro,'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
@@ -47,69 +47,69 @@
     "telemetry.enableCrashReporter": false,
     "editor.fontWeight": "300",
     "[xml]": {
-        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
     },
     "gitlens.blame.ignoreWhitespace": true,
     "window.openFilesInNewWindow": "on",
     "sync.gist": "5c2a69f68ccdab1d51f211cc4931e162",
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+    "source.fixAll.eslint": true
     },
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "vim.smartcase": true,
     "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "j"],
-            "after": ["<Esc>"]
-        }
+    {
+        "before": ["j", "j"],
+        "after": ["<Esc>"]
+    }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
-        // better vertical movement
-        { "before": ["K"], "commands": ["editor.action.showHover"] },
-        { "before": ["<Leader>", "r", "n"], "after": ["editor.action.rename"] },
-        {
-            "before": ["g", "d"],
-            "commands": ["editor.action.revealDefinition"]
-        },
-        {
-            "before": ["g", "r"],
-            "commands": ["editor.action.goToReferences"]
-        },
-        { "before": ["<Leader>", "a"], "commands": ["editor.action.quickFix"] },
-        { "before": ["<expr>", "k"], "after": ["(v:count == 0 ? 'gk' : 'k')"] },
-        { "before": ["<expr>", "j"], "after": ["(v:count == 0 ? 'gj' : 'j')"] },
-        { "before": ["<Leader>", "m", "v"], "after": [":Move", "<SPACE>"] },
-        { "before": ["<Leader>", "d", "e"], "after": [":Delete", "<CR>"] },
-        {
-            "before": ["<Leader>", "w"],
-            "commands": ["workbench.action.files.save"]
-        },
-        {
-            "before": ["<Leader>", "n"],
-            "commands": ["workbench.view.explorer"]
-        },
-        // better navigation - center screen when moving around
-        { "before": ["<silent>", "<C-u>"], "after": ["<C-u>", "zz"] },
-        {
-            "before": [">"],
-            "commands": ["editor.action.indentLines"]
-        },
-        {
-            "before": ["<"],
-            "commands": ["editor.action.outdentLines"]
-        }
+    // better vertical movement
+    { "before": ["K"], "commands": ["editor.action.showHover"] },
+    { "before": ["<Leader>", "r", "n"], "after": ["editor.action.rename"] },
+    {
+        "before": ["g", "d"],
+        "commands": ["editor.action.revealDefinition"]
+    },
+    {
+        "before": ["g", "r"],
+        "commands": ["editor.action.goToReferences"]
+    },
+    { "before": ["<Leader>", "a"], "commands": ["editor.action.quickFix"] },
+    { "before": ["<expr>", "k"], "after": ["(v:count == 0 ? 'gk' : 'k')"] },
+    { "before": ["<expr>", "j"], "after": ["(v:count == 0 ? 'gj' : 'j')"] },
+    { "before": ["<Leader>", "m", "v"], "after": [":Move", "<SPACE>"] },
+    { "before": ["<Leader>", "d", "e"], "after": [":Delete", "<CR>"] },
+    {
+        "before": ["<Leader>", "w"],
+        "commands": ["workbench.action.files.save"]
+    },
+    {
+        "before": ["<Leader>", "n"],
+        "commands": ["workbench.view.explorer"]
+    },
+    // better navigation - center screen when moving around
+    { "before": ["<silent>", "<C-u>"], "after": ["<C-u>", "zz"] },
+    {
+        "before": [">"],
+        "commands": ["editor.action.indentLines"]
+    },
+    {
+        "before": ["<"],
+        "commands": ["editor.action.outdentLines"]
+    }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [">"],
-            "commands": ["editor.action.indentLines"]
-        },
-        {
-            "before": ["<"],
-            "commands": ["editor.action.outdentLines"]
-        }
+    {
+        "before": [">"],
+        "commands": ["editor.action.indentLines"]
+    },
+    {
+        "before": ["<"],
+        "commands": ["editor.action.outdentLines"]
+    }
     ],
     "vim.leader": "<space>",
     "vim.statusBarColorControl": false,
@@ -126,61 +126,94 @@
     "vim.statusBarColors.surroundinputmode": "#007ACC",
     "vim.enableNeovim": true,
     "workbench.colorCustomizations": {
-        // "editorLineNumber.activeForeground": "#8aff80",
-        // "statusBar.background": "#8aff80",
-        // "statusBar.noFolderBackground": "#8aff80",
-        // "statusBar.debuggingBackground": "#8aff80",
-        // "statusBar.foreground": "#282a36"
+    // "editorLineNumber.activeForeground": "#8aff80",
+    // "statusBar.background": "#8aff80",
+    // "statusBar.noFolderBackground": "#8aff80",
+    // "statusBar.debuggingBackground": "#8aff80",
+    // "statusBar.foreground": "#282a36"
     },
     "editor.lineNumbers": "on",
     "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "files.insertFinalNewline": true,
     "vim.neovimPath": "/usr/local/bin/nvim",
     "yaml.customTags": [
-        "!And",
-        "!If",
-        "!Not",
-        "!Equals",
-        "!Or",
-        "!FindInMap sequence",
-        "!Base64",
-        "!Cidr",
-        "!Ref",
-        "!Sub",
-        "!Sub sequence",
-        "!GetAtt",
-        "!GetAZs",
-        "!ImportValue",
-        "!Select",
-        "!Select sequence",
-        "!Split",
-        "!Join sequence"
+    "!And",
+    "!If",
+    "!Not",
+    "!Equals",
+    "!Or",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Join sequence"
     ],
     "yaml.format.enable": true,
     "python.pythonPath": "/usr/local/bin/python3",
     "python.languageServer": "Pylance",
     "files.watcherExclude": {
-        "**/.bloop": true,
-        "**/.metals": true,
-        "**/.ammonite": true
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
     },
     "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter.notebook.ipynb"
     },
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "go.toolsManagement.autoUpdate": true,
-    "editor.tabSize": 8,
+    "editor.tabSize": 4,
     "editor.cursorStyle": "line",
     "editor.insertSpaces": false,
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "editor.wordWrap": "off",
-    "workbench.colorTheme": "Dracula"
+    "workbench.colorTheme": "Dracula",
+    "terminal.integrated.profiles.osx": {
+    "bash": {
+        "path": "bash",
+        "args": [
+        "-l"
+        ],
+        "icon": "terminal-bash"
+    },
+    "zsh": {
+        "path": "zsh",
+        "args": [
+        "-l"
+        ]
+    },
+    "fish": {
+        "path": "fish",
+        "args": [
+        "-l"
+        ]
+    },
+    "tmux": {
+        "path": "tmux",
+        "icon": "terminal-tmux"
+    },
+    "pwsh": {
+        "path": "pwsh",
+        "icon": "terminal-powershell"
+    },
+    "bash (2)": {
+        "path": "/usr/local/bin/bash"
+    }
+    },
+    "terminal.integrated.defaultProfile.osx": "bash (2)"
 }

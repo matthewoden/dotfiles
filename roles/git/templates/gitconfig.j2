@@ -9,6 +9,8 @@
         s = status
         co = checkout
         cob = checkout -b
+        sw = switch
+        swc = switch -c
         c = checkout
         ci = commit
         noff = merge --no-ff
@@ -32,6 +34,7 @@
         cb = "!git rev-parse --abbrev-ref HEAD | tr -d '\n' | pbcopy"
 
         remote-branches = "!f() { git ls-remote --heads ${1:origin} | sed 's?.*refs/heads/??'; }; f "
+        #alias = "!f() { git config --get-regexp 'alias.*' | sed 's/^alias\.//' | sed 's/[ ]/ = /' | sort}; f"
 [color]
         diff = auto
         status = auto
@@ -56,6 +59,4 @@
         default = simple
         followTags = true
 [github]
-        user = {{ git_user }}#
-[url "ssh://git@github.platforms.engineering/"]
-  insteadOf = https://github.platforms.engineering/
+        user = {{ git_user }}
