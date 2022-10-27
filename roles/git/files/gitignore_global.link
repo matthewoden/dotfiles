@@ -44,7 +44,6 @@ Session.vim
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 
 # Node

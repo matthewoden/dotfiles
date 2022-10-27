@@ -1,5 +1,5 @@
-#! /usr/bin/env bash
-
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/bashrc.pre.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.pre.bash"
 # if not running interactively, return.
 [[ $- != *i* ]] && return
 
@@ -21,7 +21,17 @@ alias fgrep='fgrep --colour=auto'
 # completion in case bash_completion isn't working/available
 complete -cf sudo
 
-# git prompt.
+### k8s context
+__kube_ps1()
+{
+    # Get current context
+    CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+
+    if [ -n "$CONTEXT" ]; then
+        echo "${CONTEXT}"
+    fi
+}
+
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     # config
     __GIT_PROMPT_DIR=/usr/local/opt/bash-git-prompt/share
@@ -32,13 +42,25 @@ if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
 
     source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
     source "/usr/local/opt/bash-git-prompt/share/prompt-colors.sh"
-    # theme overrides
-    GIT_PROMPT_START_USER="${Magenta}\u${ResetColor} in ${Green}\w${ResetColor}\n"
-    GIT_PROMPT_START_ROOT="${Magenta}\u${ResetColor} in ${Green}\w${ResetColor}\n"
-    GIT_PROMPT_END_USER=" ${White}${ResetColor}$ "
-    GIT_PROMPT_END_ROOT=" ${White}${ResetColor}# "
 
+    function prompt_callback() {
+      echo -n " (${Yellow}$(__kube_ps1)${ResetColor}) \n"
+    }
+    # theme overrides
+    GIT_PROMPT_START_USER="\n${Cyan}\#. ${Magenta}\A${White} - \u${Blue}@\h${ResetColor} in ${Green}\w${ResetColor}"
+    GIT_PROMPT_START_ROOT="${Magenta}\u${ResetColor} in ${Green}\w${ResetColor}\n"
+    GIT_PROMPT_PREFIX="["
+    GIT_PROMPT_SUFFIX="] "
+    GIT_PROMPT_LEADING_SPACE=0
+    GIT_PROMPT_END_USER="${White}${ResetColor}$ "
+    GIT_PROMPT_END_ROOT="${White}${ResetColor}# "
 fi
+
+
+# The number of trailing directory components to retain when adding
+# the directory names to the prompt -- trailing directories are
+# marked with an `...` ellipsis.
+export PROMPT_DIRTRIM=3
 
 # Don't check mail when opening terminal.
 unset MAILCHECK
@@ -94,3 +116,10 @@ export HISTTIMEFORMAT='%F %T '
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/matthewpotter/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/bashrc.post.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.post.bash"

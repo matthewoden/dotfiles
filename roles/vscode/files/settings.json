@@ -39,7 +39,7 @@
     "editor.formatOnSave": true
     },
     "terminal.external.osxExec": "Alacritty.app",
-    "editor.fontFamily": "'SF Mono Powerline',PragmataPro,'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'Berkeley Mono','SF Mono Powerline','Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
     "workbench.fontAliasing": "auto",
     "terminal.integrated.fontWeight": "400",
     "terminal.integrated.fontWeightBold": "normal",
@@ -177,9 +177,9 @@
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "go.toolsManagement.autoUpdate": true,
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.cursorStyle": "line",
-    "editor.insertSpaces": false,
+    "editor.insertSpaces": true,
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "editor.wordWrap": "off",
     "workbench.colorTheme": "Dracula",
@@ -215,5 +215,26 @@
         "path": "/usr/local/bin/bash"
     }
     },
-    "terminal.integrated.defaultProfile.osx": "bash (2)"
+    "terminal.integrated.defaultProfile.osx": "bash",
+    "editor.inlineSuggest.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+		"git.confirmSync": false,
+    "editor.detectIndentation": false,
+    "github.copilot.enable": {
+      "*": true,
+      "yaml": false,
+      "plaintext": false,
+      "markdown": false
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "markdown.preview.fontSize": 13,
+    "window.commandCenter": true,
+    "editor.accessibilitySupport": "off",
+    "terminal.integrated.env.osx": {
+      "FIG_NEW_SESSION": "1"
+    },
+    "vim.commandLineModeKeyBindings": [
+
+    ],
+    "editor.stickyScroll.enabled": true,
 }
