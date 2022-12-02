@@ -19,9 +19,7 @@
     "suppressLineUncommittedWarning": true,
     "suppressNoRepositoryWarning": false,
     },
-    //h
     "http.proxyStrictSSL": false,
-    // n
     "npm-intellisense.scanDevDependencies": true,
     //p
     "prettier.tabWidth": 4,
@@ -124,7 +122,7 @@
     "vim.statusBarColors.easymotionmode": "#007ACC",
     "vim.statusBarColors.easymotioninputmode": "#007ACC",
     "vim.statusBarColors.surroundinputmode": "#007ACC",
-    "vim.enableNeovim": true,
+    "vim.enableNeovim": false,
     "workbench.colorCustomizations": {
     // "editorLineNumber.activeForeground": "#8aff80",
     // "statusBar.background": "#8aff80",
@@ -237,4 +235,8 @@
 
     ],
     "editor.stickyScroll.enabled": true,
+    "vim.commandLineModeKeyBindingsNonRecursive": [
+
+    ],
+    "terminal.integrated.shellIntegration.enabled": false,
 }
